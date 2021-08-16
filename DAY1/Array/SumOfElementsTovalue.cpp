@@ -2,19 +2,19 @@
 using namespace std;
 void sumTarget(int arr[],int n,int sum)
 {
-    int *F =arr[0];
-    int *L = arr[n-1];
-    while(*F!=*L)
+    int F =arr[0];
+    int L = arr[n-1];
+    while(F!=L)
     {
-        if(*F + *L > sum)
+        if(F + L > sum)
         {
             L--;
         }
-        if(*F + *L < sum)
+        if(F + L < sum)
         {
             F++;
         }
-        if(*F+*L == sum){
+        if(F+L == sum){
         cout<<F <<"+"<<L<<"="<<sum;
         break;}
     }
