@@ -7,7 +7,7 @@ class node
     int data;
     node *next;
 };
-node *head;
+node* head;
 
 void insert(int x)
 {
@@ -27,6 +27,24 @@ void insert(int x)
     }
 }
 
+void NthNode(int N)
+{
+    node *ptr = head;
+    int count = 0,counter=0;
+    while(ptr!=NULL)
+    {
+        ptr=ptr->next;
+        count++;
+    }
+    node *ptr1 = head;
+    while(counter <= count - N -1)
+    {
+        ptr1=ptr1->next;
+        counter++;
+    }
+    cout << ptr1->data;
+}
+
 void display()
 {
     node *ptr=head;
@@ -37,20 +55,6 @@ void display()
     }
 }
 
-void deleteLast()
-{
-    node *ptr = head;
-    node *prev = ptr;
-    while(ptr->next!=NULL)
-    {
-        prev=ptr;
-        ptr=ptr->next;
-    }
-    prev->next = NULL;
-    delete ptr;
-    
-}
-
 int main()
 {
     insert(1);
@@ -58,8 +62,9 @@ int main()
     insert(3);
     insert(4);
     display();
-    deleteLast();
-    cout<<endl<<"After Deleting node in last"<<endl;
-    display();
+    int N;
+    cout << "\nEnter the value of N from last : ";
+    cin >> N;
+    NthNode(N);
     return 0;
-}
+} 

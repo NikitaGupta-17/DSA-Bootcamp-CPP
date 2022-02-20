@@ -27,28 +27,16 @@ void insert(int x)
     }
 }
 
-void display()
+int counter()
 {
     node *ptr=head;
+    int count = 0;
     while(ptr!=NULL)
     {
-        cout<<"->"<<ptr->data;
         ptr=ptr->next;
+        count++;
     }
-}
-
-void deleteLast()
-{
-    node *ptr = head;
-    node *prev = ptr;
-    while(ptr->next!=NULL)
-    {
-        prev=ptr;
-        ptr=ptr->next;
-    }
-    prev->next = NULL;
-    delete ptr;
-    
+    return count;
 }
 
 int main()
@@ -57,9 +45,6 @@ int main()
     insert(2);
     insert(3);
     insert(4);
-    display();
-    deleteLast();
-    cout<<endl<<"After Deleting node in last"<<endl;
-    display();
+    cout<< "Number of nodes present : "<<counter();
     return 0;
-}
+} 

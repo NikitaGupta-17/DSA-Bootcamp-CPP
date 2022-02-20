@@ -1,11 +1,10 @@
 #include<iostream>
 using namespace std;
 
-class node
-{
+class node{
     public:
-    int data;
     node *next;
+    int data;
 };
 node *head;
 
@@ -27,6 +26,23 @@ void insert(int x)
     }
 }
 
+void reverse(int k)
+{
+    node *prev=NULL;
+    node *next=NULL;
+    node *current=head;
+    int c=0;
+    while(current != NULL  && c<k)
+    {
+        next = current->next;
+        current->next = prev;
+        prev=current;
+        current =next;
+        c++;
+    }
+    head = prev;
+}
+
 void display()
 {
     node *ptr=head;
@@ -37,20 +53,6 @@ void display()
     }
 }
 
-void deleteLast()
-{
-    node *ptr = head;
-    node *prev = ptr;
-    while(ptr->next!=NULL)
-    {
-        prev=ptr;
-        ptr=ptr->next;
-    }
-    prev->next = NULL;
-    delete ptr;
-    
-}
-
 int main()
 {
     insert(1);
@@ -58,8 +60,11 @@ int main()
     insert(3);
     insert(4);
     display();
-    deleteLast();
-    cout<<endl<<"After Deleting node in last"<<endl;
+    int k;
+    cout<<endl<<"Enter the value of k : ";
+    cin >> k;
+    reverse(k);
+    cout<<endl<<"Reverse Linked List : ";
     display();
     return 0;
 }

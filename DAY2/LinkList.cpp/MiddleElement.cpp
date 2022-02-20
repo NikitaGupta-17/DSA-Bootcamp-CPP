@@ -37,18 +37,26 @@ void display()
     }
 }
 
-void deleteLast()
+void middleNode()
 {
-    node *ptr = head;
-    node *prev = ptr;
-    while(ptr->next!=NULL)
+    int count =0;
+    node *ptr=head;
+    while(ptr!=NULL)
     {
-        prev=ptr;
+        count++;
         ptr=ptr->next;
     }
-    prev->next = NULL;
-    delete ptr;
-    
+    ptr=head;
+    int position;
+    if(count %2 == 0)
+    position = count/2;
+    else
+    position = count/2 +1;
+    for(int i=1;i<position;i++)
+    {
+        ptr = ptr->next;
+    }
+    cout << ptr->data;
 }
 
 int main()
@@ -57,9 +65,9 @@ int main()
     insert(2);
     insert(3);
     insert(4);
+    insert(5);
     display();
-    deleteLast();
-    cout<<endl<<"After Deleting node in last"<<endl;
-    display();
+    cout << endl;
+    middleNode();
     return 0;
 }
